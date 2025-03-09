@@ -20,7 +20,53 @@ def main(page: ft.Page):
     page.title = "Запись на тренировки"
     page.appbar = ft.AppBar(title=ft.Text("Запись на тренировки"))
 
+    def clear_all(e):
+        for control in page.controls[
+                       :]:  # Создаем копию списка, чтобы избежать ошибки при изменении списка во время итерации
+            if control != btn_clear:
+                page.controls.remove(control)
+        page.update()
+    login = ft.TextField(label="login", smart_dashes_type=True)
+    passwordd = ft.TextField(label="password", smart_dashes_type=True, password=True)
+    def exitt(e):
+        def answer_form(e):
+            if login.value == "":
+                if passwordd.value == "":
+                    passwordd.error_text = "Поле не заполнено!"
+                    passwordd.bgcolor = ft.Colors.with_opacity(0.5, '#ff0000')  # ft.Colors.RED
+                    error_text.value = "Поле должно быть заполнено."
+                else:
+                    passwordd.error_text = None
+                    passwordd.bgcolor = ft.Colors.with_opacity(0.5, '#ffffff')  # ft.Colors.white
+                    error_text.value = ""
+                login.error_text = "Поле не заполнено!"
+                login.bgcolor = ft.Colors.with_opacity(0.5, '#ff0000')  # ft.Colors.RED
+                error_text.value = "Поле должно быть заполнено."
+            else:
+                if passwordd.value == "":
+                    passwordd.error_text = "Поле не заполнено!"
+                    passwordd.bgcolor = ft.Colors.with_opacity(0.5, '#ff0000')  # ft.Colors.RED
+                    error_text.value = "Поле должно быть заполнено."
+                else:
+                    passwordd.error_text = None
+                    passwordd.bgcolor = ft.Colors.with_opacity(0.5, '#ffffff')  # ft.Colors.white
+                    error_text.value = ""
+                login.error_text = None
+                login.bgcolor = ft.Colors.with_opacity(0.5, '#ffffff')  # ft.Colors.white
+                error_text.value = ""
+            print(f"{login.value},{passwordd.value}")
+        btn_clear.on_click = clear_all
+        page.update()
+        form_exitt = ft.Column([
+            ft.Text("Вход:", style=ft.TextStyle(weight="bold")),
+            login,
+            passwordd,
+            ft.ElevatedButton("Записаться", on_click=answer_form),
+        ])
+        page.add(form_exitt)
     # Форма записи
+
+    btn_clear = ft.ElevatedButton("Вход/выход", width=100, on_click=exitt)
     nametext =  ft.TextField(label="Имя", smart_dashes_type=True)
     phonetext = ft.TextField(label="Телефон")
     datetext = ft.Text(value=datetime
@@ -105,6 +151,7 @@ def main(page: ft.Page):
         page.update()
 
     form = ft.Column([
+        btn_clear,
         nametext,
         phonetext,
         datebutton,
