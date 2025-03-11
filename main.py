@@ -20,48 +20,49 @@ def main(page: ft.Page):
     page.title = "Запись на тренировки"
     page.appbar = ft.AppBar(title=ft.Text("Запись на тренировки"))
 
-    def clear_all(e):
+    def clear_all():
         for control in page.controls[
                        :]:  # Создаем копию списка, чтобы избежать ошибки при изменении списка во время итерации
             if control != btn_clear:
                 page.controls.remove(control)
         page.update()
-    login = ft.TextField(label="login", smart_dashes_type=True)
-    passwordd = ft.TextField(label="password", smart_dashes_type=True, password=True)
+
     def exitt(e):
+        login = ft.TextField(label="login", smart_dashes_type=True)
+        passwordd = ft.TextField(label="password", smart_dashes_type=True, password=True)
+        clear_all()
+        page.update()
         def answer_form(e):
             if login.value == "":
                 if passwordd.value == "":
                     passwordd.error_text = "Поле не заполнено!"
-                    passwordd.bgcolor = ft.Colors.with_opacity(0.5, '#ff0000')  # ft.Colors.RED
+                    passwordd.Colors = ft.Colors.with_opacity(0.5, '#ff0000')  # ft.Colors.RED
                     error_text.value = "Поле должно быть заполнено."
                 else:
                     passwordd.error_text = None
-                    passwordd.bgcolor = ft.Colors.with_opacity(0.5, '#ffffff')  # ft.Colors.white
+                    passwordd.Colors = ft.Colors.with_opacity(0.5, '#ffffff')  # ft.Colors.white
                     error_text.value = ""
                 login.error_text = "Поле не заполнено!"
-                login.bgcolor = ft.Colors.with_opacity(0.5, '#ff0000')  # ft.Colors.RED
+                login.Colors = ft.Colors.with_opacity(0.5, '#ff0000')  # ft.Colors.RED
                 error_text.value = "Поле должно быть заполнено."
             else:
                 if passwordd.value == "":
                     passwordd.error_text = "Поле не заполнено!"
-                    passwordd.bgcolor = ft.Colors.with_opacity(0.5, '#ff0000')  # ft.Colors.RED
+                    passwordd.Colors = ft.Colors.with_opacity(0.5, '#ff0000')  # ft.Colors.RED
                     error_text.value = "Поле должно быть заполнено."
                 else:
                     passwordd.error_text = None
-                    passwordd.bgcolor = ft.Colors.with_opacity(0.5, '#ffffff')  # ft.Colors.white
+                    passwordd.Colors = ft.Colors.with_opacity(0.5, '#ffffff')  # ft.Colors.white
                     error_text.value = ""
                 login.error_text = None
-                login.bgcolor = ft.Colors.with_opacity(0.5, '#ffffff')  # ft.Colors.white
+                login.Colors = ft.Colors.with_opacity(0.5, '#ffffff')  # ft.Colors.white
                 error_text.value = ""
             print(f"{login.value},{passwordd.value}")
-        btn_clear.on_click = clear_all
-        page.update()
         form_exitt = ft.Column([
             ft.Text("Вход:", style=ft.TextStyle(weight="bold")),
             login,
             passwordd,
-            ft.ElevatedButton("Записаться", on_click=answer_form),
+            ft.ElevatedButton("Вход", on_click=answer_form),
         ])
         page.add(form_exitt)
     # Форма записи
@@ -127,26 +128,26 @@ def main(page: ft.Page):
         if nametext.value == "":
             if phonetext.value == "":
                 phonetext.error_text = "Поле не заполнено!"
-                phonetext.bgcolor = ft.colors.RED_100
+                phonetext.Colors = ft.colors.RED_100
                 error_text.value = "Поле должно быть заполнено."
             else:
                 phonetext.error_text = None
-                phonetext.bgcolor = ft.colors.WHITE
+                phonetext.Colors = ft.colors.WHITE
                 error_text.value = ""
             nametext.error_text = "Поле не заполнено!"
-            nametext.bgcolor = ft.colors.RED_100
+            nametext.Colors = ft.colors.RED_100
             error_text.value = "Поле должно быть заполнено."
         else:
             if phonetext.value == "":
                 phonetext.error_text = "Поле не заполнено!"
-                phonetext.bgcolor = ft.colors.RED_100
+                phonetext.Colors = ft.colors.RED_100
                 error_text.value = "Поле должно быть заполнено."
             else:
                 phonetext.error_text = None
-                phonetext.bgcolor = ft.colors.WHITE
+                phonetext.Colors = ft.colors.WHITE
                 error_text.value = ""
             nametext.error_text = None
-            nametext.bgcolor = ft.colors.WHITE
+            nametext.Colors = ft.colors.WHITE
             error_text.value = ""
         page.update()
 
