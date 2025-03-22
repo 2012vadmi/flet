@@ -5,6 +5,23 @@ import datetime
 def main(page: ft.Page):
     page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
     error_text = ft.Text("", color="red")  # Текст ошибки
+
+    nametext =  ft.TextField(label="Имя", smart_dashes_type=True)
+    phonetext = ft.TextField(label="Телефон")
+    datetext = ft.Text(value=datetime
+                       .datetime.now().strftime('%Y-%m-%d'))
+    datebutton = ft.ElevatedButton(
+        "Pick date",
+        icon=ft.Icons.CALENDAR_MONTH,
+        on_click=lambda e: page.open(
+            ft.DatePicker(
+                first_date=datetime.datetime(year=2025, month=2, day=22),
+                last_date=datetime.datetime(year=2026, month=2, day=22),
+                on_change=handle_change,
+                on_dismiss=handle_dismissal,
+            )
+        ),
+    )
     # Данные (замените на ваши данные)
     schedule = """
     Понедельник: 10:00 - 11:00, 18:00 - 19:00
@@ -19,6 +36,18 @@ def main(page: ft.Page):
     # Виджеты
     page.title = "Запись на тренировки"
     page.appbar = ft.AppBar(title=ft.Text("Запись на тренировки"))
+    def forym():
+        forym_page = ft.Column([
+            btn_clear,
+            nametext,
+            phonetext,
+            datebutton,
+            datetext,
+            ft.ElevatedButton("Записаться", on_click=submit_form),
+        ])
+        page.add(forym_page)
+        page.update()
+
 
     def clear_all():
         for control in page.controls[
@@ -57,6 +86,8 @@ def main(page: ft.Page):
                 login.error_text = None
                 login.Colors = ft.Colors.with_opacity(0.5, '#ffffff')  # ft.Colors.white
                 error_text.value = ""
+            clear_all()
+            forym()
             print(f"{login.value},{passwordd.value}")
         form_exitt = ft.Column([
             ft.Text("Вход:", style=ft.TextStyle(weight="bold")),
@@ -66,24 +97,8 @@ def main(page: ft.Page):
         ])
         page.add(form_exitt)
     # Форма записи
-
     btn_clear = ft.ElevatedButton("Вход/выход", width=100, on_click=exitt)
-    nametext =  ft.TextField(label="Имя", smart_dashes_type=True)
-    phonetext = ft.TextField(label="Телефон")
-    datetext = ft.Text(value=datetime
-                       .datetime.now().strftime('%Y-%m-%d'))
-    datebutton = ft.ElevatedButton(
-        "Pick date",
-        icon=ft.Icons.CALENDAR_MONTH,
-        on_click=lambda e: page.open(
-            ft.DatePicker(
-                first_date=datetime.datetime(year=2025, month=2, day=22),
-                last_date=datetime.datetime(year=2026, month=2, day=22),
-                on_change=handle_change,
-                on_dismiss=handle_dismissal,
-            )
-        ),
-    )
+
     def handle_close(e):
         page.close(dlg_modal)
 
@@ -150,6 +165,8 @@ def main(page: ft.Page):
             nametext.Colors = ft.colors.WHITE
             error_text.value = ""
         page.update()
+
+
 
     form = ft.Column([
         btn_clear,
