@@ -1,0 +1,26 @@
+{
+  "main": {
+    "password": "12345678",
+    "phone": "+79163384459",
+    "name": "\u0412\u0430\u0434\u0438\u043c",
+    "role": "Owner"
+  },
+  "test": {
+    "password": "qwerty123",
+    "phone": "qwerty",
+    "name": "qwetu",
+    "role": "Player"
+  },
+  "asd": {
+    "password": "zas",
+    "phone": "test",
+    "name": "test",
+    "role": "Coach"
+  },
+  "qwerty": {
+    "password": "qwerty",
+    "phone": "q",
+    "name": "qwerty",
+    "role": "Administration"
+  }
+}

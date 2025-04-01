@@ -1,0 +1,22 @@
+[
+  {
+    "player_name": "qwetu",
+    "player_phone": "qwerty",
+    "coach": "asd",
+    "type": "\u041f\u043b\u0430\u0432\u0430\u043d\u0438\u0435",
+    "date": "21.04.2025",
+    "time": "9:00",
+    "rating": 5.0,
+    "review": "\u043a\u0440"
+  },
+  {
+    "player_name": "qwety",
+    "player_phone": "qwerty",
+    "coach": "asd",
+    "type": "\u041f\u043b\u0430\u0432\u0430\u043d\u0438\u0435",
+    "date": "12.04.2025",
+    "time": "9:00",
+    "rating": 5.0,
+    "review": ""
+  }
+]

@@ -1,0 +1,19 @@
+{
+    "de8892b9": {
+        "questions": [
+            {
+                "question": "Какая это школа",
+                "options": [
+                    "1533",
+                    "1260"
+                ],
+                "correct": 0,
+                "points": 1,
+                "media": {
+                    "type": "image",
+                    "path": "media/3cf0890c-7f31-463e-8e9a-a0fb5a306184.jpg"
+                }
+            }
+        ]
+    }
+}
